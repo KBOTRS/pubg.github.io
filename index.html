@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBG 地图资源查询</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        body {
+            background: #1a1a2e;
+            color: #fff;
+        }
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: #16213e;
+            border-bottom: 2px solid #0f3460;
+        }
+        .map-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 20px;
+            justify-content: center;
+            background: #0f3460;
+        }
+        .map-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #e94560;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .map-btn:hover {
+            background: #ff6b6b;
+            transform: scale(1.05);
+        }
+        .map-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .map-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background: #16213e;
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .color-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <h1>PUBG 地图资源查询</h1>
+        <p>选择地图查看资源点位</p >
+    </div>
+
+    <div class="map-selector">
+        <button class="map-btn" data-map="erangel">艾伦格</button>
+        <button class="map-btn" data-map="miramar">米拉玛</button>
+        <button class="map-btn" data-map="sanhok">萨诺</button>
+        <button class="map-btn" data-map="vikendi">维寒迪</button>
+        <button class="map-btn" data-map="taego">泰戈</button>
+        <button class="map-btn" data-map="deston">帝斯顿</button>
+        <button class="map-btn" data-map="karakin">卡拉金</button>
+        <button class="map-btn" data-map="haven">褐湾</button>
+    </div>
+
+    <div class="map-container">
+        < img id="current-map" class="map-image" src="https://example.com/erangel.jpg" alt="艾伦格">
+        <div class="legend">
+            <div class="legend-item"><span class="color-dot" style="background: #e94560;"></span> 高资源点</div>
+            <div class="legend-item"><span class="color-dot" style="background: #00d2d3;"></span> 载具刷新点</div>
+            <div class="legend-item"><span class="color-dot" style="background: #2ed573;"></span> 加油站</div>
+            <div class="legend-item"><span class="color-dot" style="background: #ffa502;"></span> 车库</div>
+        </div>
+    </div>
+
+    <script>
+        // 替换为你实际的地图图片链接
+        const mapImages = {
+            erangel: "https://example.com/erangel.jpg",
+            miramar: "https://example.com/miramar.jpg",
+            sanhok: "https://example.com/sanhok.jpg",
+            vikendi: "https://example.com/vikendi.jpg",
+            taego: "https://example.com/taego.jpg",
+            deston: "https://example.com/deston.jpg",
+            karakin: "https://example.com/karakin.jpg",
+            haven: "https://example.com/haven.jpg"
+        };
+
+        const buttons = document.querySelectorAll('.map-btn');
+        const currentMap = document.getElementById('current-map');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const mapName = btn.getAttribute('data-map');
+                currentMap.src = mapImages[mapName];
+                currentMap.alt = btn.textContent;
+            });
+        });
+    </script>
+</body>
+</html>
